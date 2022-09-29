@@ -1,0 +1,26 @@
+$maf-background-color: lightgoldenrodyellow;
+
+$maf-margin: .5em;
+$maf-menu-font-weight: 400;
+
+$maf-button-width: 10em;
+$maf-button-height: 2em;
+
+button.maf {
+    margin: $maf-margin $maf-margin $maf-margin 0;
+    padding: $maf-margin;
+    min-width: 8em;
+    min-height: 2em;
+    font-weight: $maf-menu-font-weight;
+}
+
+/* Styling of FormComponent and parts */
+section.maf-form {
+    background-color: $maf-background-color;
+
+    /* Styling of FormFieldDirective */
+    .maf-form-field[mafFormField] {
+        background-color: yellow; /* ToDo */
+        border-color: blueviolet; /* ToDo */
+    }
+}

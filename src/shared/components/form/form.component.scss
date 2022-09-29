@@ -1,0 +1,11 @@
+@use '/src/assets/css/framework';
+
+section.maf-form {
+
+    div.maf-buttons-panel {
+        background-color:  pink; /* ToDo */
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+}
