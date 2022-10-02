@@ -1,5 +1,6 @@
-import { Component, OnInit, Optional, ViewChild } from '@angular/core';
+import { Component, Host, OnInit, Optional, ViewChild } from '@angular/core';
 import { ControlContainer, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AttributeDirective } from 'src/shared/directives/attribute.directive';
 import { EntityDirective } from 'src/shared/directives/entity.directive';
 import { FormFieldBase } from '../form-field/form-field-base';
 import { FormFieldComponent } from '../form-field/form-field.component';
@@ -24,6 +25,7 @@ export class NaturalComponent extends FormFieldBase implements ControlValueAcces
   // }
 
   constructor(
+    @Optional() public attributeDirective: AttributeDirective,
     @Optional() controlContainer: ControlContainer,
     @Optional() entityDirective: EntityDirective
   ) {

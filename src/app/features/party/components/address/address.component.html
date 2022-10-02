@@ -1,4 +1,4 @@
-<maf-form [formGroup]="formGroup" mafEntity="Address">
+<maf-form [formGroup]="formGroup" entity="Address">
     <div class="row">
         <div class="col">
             <label>Line 1</label>
@@ -7,6 +7,6 @@
             <input type="text" formControlName="line1" class="extra" mafFormField />
         </div>
         <hr>
-        <maf-natural formControlName="natural"></maf-natural>
+        <maf-natural formControlName="natural" attribute="natural"></maf-natural>
     </div>
 </maf-form>

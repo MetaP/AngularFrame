@@ -8,11 +8,13 @@ import { FormFieldDirective } from './directives/form-field.directive';
 import { FormFieldComponent } from './components/form-field/form-field.component';
 import { NaturalComponent } from './components/natural/natural.component';
 import { EntityDirective } from './directives/entity.directive';
+import { AttributeDirective } from './directives/attribute.directive';
 
 
 
 @NgModule({
   exports: [
+    AttributeDirective,
     EntityDirective,
     FormComponent,
     FormFieldDirective,
@@ -22,6 +24,7 @@ import { EntityDirective } from './directives/entity.directive';
     ReactiveFormsModule
   ],
   declarations: [
+    AttributeDirective,
     EntityDirective,
     FormComponent,
     FormFieldDirective,

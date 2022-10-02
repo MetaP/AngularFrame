@@ -1,19 +1,19 @@
-import { Component, Input, OnInit, Optional } from '@angular/core';
-import { ControlContainer, FormControl, FormGroup } from '@angular/forms';
-import { EntityDirective } from 'src/shared/directives/entity.directive';
+import { Component, Optional } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AttributeDirective } from 'src/shared/directives/attribute.directive';
 
 @Component({
   selector: 'maf-form-field',
   templateUrl: './form-field.component.html',
   styleUrls: ['./form-field.component.scss']
 })
-export class FormFieldComponent /* implements OnInit */ {
+export class FormFieldComponent {
 
-  @Input() label?: string = "Test";
+  caption: Observable<string>;
 
-  // constructor(
-  //   @Optional() private entityDirective: EntityDirective
-  // ) { 
-  //   console.log(`** FormField - Entity: ${entityDirective.mafEntity}`)
-  // }
+  constructor(
+    @Optional() private attributeDirective: AttributeDirective, 
+  ) { 
+    this.caption = this.attributeDirective.caption;
+  }
 }
