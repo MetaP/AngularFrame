@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ControlContainer, FormControlStatus, FormGroup } from '@angular/forms';
-import { combineLatest, map, Observable, Subject, Subscription, tap } from 'rxjs';
+import { ControlContainer, FormGroup } from '@angular/forms';
+import { combineLatest, map, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'maf-form',
@@ -60,13 +60,10 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('** ngOnInit **');
-    this.allowSave$.subscribe((allow) =>
-      console.log(console.log(`** Allow: ${allow} **`))
-    );
+    // console.log('** ngOnInit **');
 
     // If the formGroup is not specified as input
-    // Thry to get it as the control with name formControlName from the parent FormGroup
+    // Try to get it as the control with name formControlName from the parent FormGroup
     if (!this.formGroup && this.formControlName)
     {
       const parentFormGroup = <FormGroup>this.controlContainer?.control;

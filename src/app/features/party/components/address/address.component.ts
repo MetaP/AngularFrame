@@ -21,7 +21,8 @@ export class AddressComponent implements OnInit {
 
   private createFormGroup() : FormGroup {
     return this.fb.group({
-      line1: ['']
+      line1: [''],
+      natural: [32]
     })
   }
 

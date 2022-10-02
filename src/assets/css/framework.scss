@@ -1,26 +1,68 @@
 $maf-background-color: lightgoldenrodyellow;
 
+$maf-padding-input: .25em;
+
 $maf-margin: .5em;
 $maf-menu-font-weight: 400;
 
 $maf-button-width: 10em;
 $maf-button-height: 2em;
 
-button.maf {
-    margin: $maf-margin $maf-margin $maf-margin 0;
-    padding: $maf-margin;
-    min-width: 8em;
-    min-height: 2em;
-    font-weight: $maf-menu-font-weight;
-}
+.maf-standard-theme {
 
-/* Styling of FormComponent and parts */
-section.maf-form {
-    background-color: $maf-background-color;
-
-    /* Styling of FormFieldDirective */
-    .maf-form-field[mafFormField] {
-        background-color: yellow; /* ToDo */
-        border-color: blueviolet; /* ToDo */
+    maf-form-field {
+        // display: block;
+        // box-sizing: border-box;
+        // padding: $maf-margin;
+        // background-color: brown;
+        // width:100%;
+    
+        div {
+            background-color: lightgreen;
+            padding: 0;
+        }
+    
+        /* Style of label inside a FormFieldComponent */
+        label {
+            color: green; /* ToDo */
+            background-color: aquamarine;
+            border-bottom: 1px dotted black; 
+            min-width: 1000px;
+            left: 0;
+            position: relative;
+        }
+    
+        /* Style of input inside a FormFieldComponent */
+        input {
+            padding: $maf-padding-input;
+            margin: 0;
+            //margin-left: auto;
+            // position:relative;
+            // top: 0;
+            left: 30%;
+            // right: 100%;
+            position: relative;
+            box-sizing: border-box;
+            max-width: 70%;
+        }
+    }
+    
+    button.maf {
+        margin: $maf-margin $maf-margin $maf-margin 0;
+        padding: $maf-margin;
+        min-width: 8em;
+        min-height: 2em;
+        font-weight: $maf-menu-font-weight;
+    }
+    
+    /* Styling of FormComponent and parts */
+    section.maf-form {
+        background-color: $maf-background-color;
+    
+        /* Styling of FormFieldDirective */
+        .maf-form-field[mafFormField] {
+            background-color: yellow; /* ToDo */
+            border-color: blueviolet; /* ToDo */
+        }
     }
 }

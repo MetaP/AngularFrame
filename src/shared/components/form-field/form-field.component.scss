@@ -1,0 +1,14 @@
+@use '/src/assets/css/framework';
+
+// div {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: flex-end;
+// }
+:host {
+    display: block;
+    box-sizing: border-box;
+    padding: framework.$maf-margin;
+    background-color: brown;
+    width:100%
+}
