@@ -1,0 +1,5 @@
+<!-- <p>FormStatusComponent - Not yet implemented</p> -->
+<div *ngIf="formGroup">
+    <b>Touched:</b> {{formGroup.touched}} <b>Dirty:</b> {{formGroup.dirty}} <b>Valid:</b> {{formGroup.valid}}
+    <br>{{formGroup.value | json}}
+</div>

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DemoModule } from 'src/demo/demo.module';
 import { PartyModule } from './features/party/party.module';
 
 @NgModule({
@@ -12,6 +13,7 @@ import { PartyModule } from './features/party/party.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DemoModule,
     PartyModule
   ],
   providers: [],

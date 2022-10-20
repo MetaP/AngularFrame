@@ -1,0 +1,23 @@
+<maf-form [formGroup]="formGroup" entity="Address">
+    <div class="row">
+        <div class="col">
+            <label>Line 1 (*)</label>
+        </div>
+        <div class="col">
+            <input type="text" formControlName="line1" class="extra" mafFormField mafErrorDisplay required/>
+        </div>
+        <hr>
+        <maf-natural formControlName="natural" attribute="natural"  mafErrorDisplay></maf-natural>
+        <!-- <maf-dummy></maf-dummy> -->
+    </div>
+</maf-form>
+<hr>
+<p>Below this paragraph is an ErrorDisplayComponent (&lt;maf-error-display&gt;) linked to the errors fo the 'line1' FormControl.</p>
+<maf-error-display [errors]="line1FormControl.errors"></maf-error-display>
+<hr>
+<div>
+    <b>Touched:</b> {{formGroup.touched}} <b>Dirty:</b> {{formGroup.dirty}} <b>Valid:</b> {{formGroup.valid}}
+    <br>{{formGroup.value | json}}
+    <br>{{line1FormControl.errors | json}}
+</div>
+

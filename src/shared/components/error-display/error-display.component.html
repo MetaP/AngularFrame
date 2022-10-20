@@ -1,0 +1,17 @@
+<section *ngIf="(messages$ | async) as messages">
+    <div *ngFor="let message of messages"></div>
+</section>>
+
+<!-- <section> -->
+
+    <!-- ***** I was not able to make the combination of a messsages$ and a hasMessages$ observable work! ***** -->
+
+    <!-- <ng-container *ngIf="((messages$ | async) as messages) || messages.length > 0; else noMessages"> -->
+
+    <!-- <ng-container *ngIf="hasMessages$ | async; else noMessages">
+        <div>** There are errors. **</div> -->
+        <div *ngFor="let message of (messages$ | async)">{{message}}</div>
+    <!-- </ng-container>
+    <ng-template #noMessages>** There are no validation errors. **</ng-template> -->
+
+<!-- </section>> -->

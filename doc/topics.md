@@ -1,5 +1,17 @@
 # Development topics
 
+## Design
+- Program against abstract GUI elements (in responsive design the placement of elements can vary)
+    - status display
+    - error display
+    - page title
+    - breadcrumb
+    - main, secondary and context menu
+- Design pages with abstract widgets
+    - text
+    - selection (can be implemented as combo, radio buttons, checkbox (2 or 3 states))
+    - multi-selection (list with highlighting, ticks, checksboxes)
+
 ## Angular
 
 - Directives
@@ -11,6 +23,16 @@
     - inject ControlContainer
     - See [Access FormControl inside custom Angular Component](https://stackoverflow.com/questions/59513861/access-formcontrol-inside-custom-angular-component) [StackOverflow]
 - X
+
+### Patterns
+- Observable binding
+    - See ErrorDisplayComponent
+    - Use the on push change detection strategy (specify `changeDetection: ChangeDetectionStrategy.OnPush` in the Component decorator)
+    - code:
+```
+    private _x$ = new [Behavior]Subject<X>(...);
+    public x$: Observable<X> = this._x$.asObservable();
+```
 
 ### Translations
 - Give each element a translations structure

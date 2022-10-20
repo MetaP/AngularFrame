@@ -1,12 +1,14 @@
-<maf-form [formGroup]="formGroup" entity="Address">
-    <div class="row">
-        <div class="col">
-            <label>Line 1</label>
-        </div>
-        <div class="col">
-            <input type="text" formControlName="line1" class="extra" mafFormField />
-        </div>
-        <hr>
-        <maf-natural formControlName="natural" attribute="natural"></maf-natural>
-    </div>
+<h1>AddressComponent</h1>
+<hr>
+<maf-form entity="Address" [formGroup]="formGroup">
+    <maf-text attribute="line1" readonly="true" disabled="false"></maf-text>
+    <maf-selection></maf-selection>
+    <hr>
+    <maf-form-status></maf-form-status>
 </maf-form>
+<!-- <form entity="Address" [formGroup]="formGroup">
+    <maf-text attribute="line1"></maf-text>
+    <maf-selection></maf-selection>
+    <hr>
+    <maf-form-status></maf-form-status>
+</form> -->
