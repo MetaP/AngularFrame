@@ -1,31 +1,29 @@
 import { Directive, Input, OnInit, Optional, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, ControlContainer } from "@angular/forms";
-import { EntityDirective } from "src/shared/directives/entity.directive";
+import { EntityDirective } from "../directives/entity.directive";
 import { FormFieldComponent } from "./form-field.component";
 
 @Directive()
 export class FormFieldBase implements OnInit {
 
-    @Input() label?: string;
-  
-    // @Input() formControl!: FormControl;
-  
-    formGroup?: FormGroup;
-  
-    @Input() formControlName?: string;
+  @Input() formGroup: FormGroup | undefined;
+  @Input() formControlName: string | undefined;
+  @Input() formControl: FormControl | undefined;
 
-    @ViewChild(FormFieldComponent, { static: true }) parentFormField!: FormFieldComponent;
-  
-    constructor(
-      @Optional() private controlContainer: ControlContainer,
-      @Optional() private entityDirective: EntityDirective
-    ) { 
-        console.log(`** FormFieldBase - Entity: ${entityDirective.entity}`)
-    }
-  
-    ngOnInit(): void {
-      this.formGroup = this.controlContainer.control as FormGroup;
-  
+  @Input() label: string | undefined;
+
+  @ViewChild(FormFieldComponent, { static: true }) parentFormField!: FormFieldComponent;
+
+  constructor(
+    @Optional() private controlContainer: ControlContainer,
+    @Optional() private entityDirective: EntityDirective
+  ) {
+    console.log(`** FormFieldBase - Entity: ${entityDirective.entity}`)
+  }
+
+  ngOnInit(): void {
+    this.formGroup = this.controlContainer.control as FormGroup;
+
     //   if (this.formControlName) {
     //     if (this.formControl)
     //       console.log(`Warning! formControlName (${this.formControlName}) is ignored, since a formControl is also specified.`);
@@ -34,10 +32,9 @@ export class FormFieldBase implements OnInit {
     //     else console.log(`Warning! formControlName (${this.formControlName}) can't be resolved into a FormControl, since no FormGroup is found.`)
     //   }
 
-      // Use the formControlName as default label.
-      const labelKey =  this.label ? this.label: this.formControlName;
+    // Use the formControlName as default label.
+    const labelKey = this.label ? this.label : this.formControlName;
     //   this.parentFormField.label = this.entityDirective.getTranslation(labelKey);
-    }
-
   }
-  
+
+}

@@ -1,68 +1,153 @@
-$maf-background-color: lightgoldenrodyellow;
+$maf-color-form-background: ivory;
+$maf-color-input: white;
+$maf-color-primary-dark:rgb(0, 0, 10);
+$maf-color-primary: darkblue;
+$maf-color-primary-lighter: rgb(50, 50, 150);
+$maf-color-primary-light: rgb(225, 225, 255);
+
+$maf-font-weight-label: 600;
+$maf-font-weight-menu: 600;
+
+$maf-width-label: 10em; // The standard width of a form field label.
+$maf-spacing-form: .25em;
+$maf-spacing-move: .15em;
+
+$maf-border-radius: 5px;
 
 $maf-padding-input: .25em;
 
 $maf-margin: .5em;
-$maf-menu-font-weight: 400;
 
 $maf-button-width: 10em;
 $maf-button-height: 2em;
 
 .maf-standard-theme {
 
-    maf-form-field {
-        // display: block;
-        // box-sizing: border-box;
-        // padding: $maf-margin;
-        // background-color: brown;
-        // width:100%;
-    
-        div {
-            background-color: lightgreen;
-            padding: 0;
-        }
-    
-        /* Style of label inside a FormFieldComponent */
-        label {
-            color: green; /* ToDo */
-            background-color: aquamarine;
-            border-bottom: 1px dotted black; 
-            min-width: 1000px;
-            left: 0;
-            position: relative;
-        }
-    
-        /* Style of input inside a FormFieldComponent */
-        input {
-            padding: $maf-padding-input;
-            margin: 0;
-            //margin-left: auto;
-            // position:relative;
-            // top: 0;
-            left: 30%;
-            // right: 100%;
-            position: relative;
-            box-sizing: border-box;
-            max-width: 70%;
-        }
+    // font-family: Arial, Helvetica, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+
+    .disabled {
+        color: lightgray !important;
+    }
+
+    maf-form-status {
+        background-color: pink;
     }
     
+    /* Styling of the form component */
+
+    .maf-form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 4 * $maf-spacing-form;
+
+        background-color: $maf-color-form-background;
+        padding: $maf-spacing-form;
+
+        form {
+            /* Orden the form fields as rows in the form */
+            display: flex;
+            flex-direction: column;
+            row-gap: $maf-spacing-form;
+        }
+    }
+
+    .maf-buttons-panel {
+        /* Align buttons to the right. See: Aligning items in a flex container: 
+           https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container */
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        column-gap: $maf-spacing-form;
+    }
+
     button.maf {
-        margin: $maf-margin $maf-margin $maf-margin 0;
         padding: $maf-margin;
         min-width: 8em;
         min-height: 2em;
-        font-weight: $maf-menu-font-weight;
-    }
-    
-    /* Styling of FormComponent and parts */
-    section.maf-form {
-        background-color: $maf-background-color;
-    
-        /* Styling of FormFieldDirective */
-        .maf-form-field[mafFormField] {
-            background-color: yellow; /* ToDo */
-            border-color: blueviolet; /* ToDo */
+        font-weight: $maf-font-weight-menu;
+
+        background-color: $maf-color-primary;
+        color: $maf-color-input;
+        border-radius: $maf-border-radius;
+        border: none;
+        margin-bottom: $maf-spacing-form;
+        box-shadow: 0 $maf-spacing-form $maf-color-primary-dark;
+        opacity: .8;
+        &:disabled {
+            opacity: .5;
+        }
+        &:hover:enabled {
+            opacity: 1;
+        }
+        &:active:enabled {
+            box-shadow: 0 $maf-spacing-move $maf-color-primary-dark;
+            transform: translateY($maf-spacing-move);
         }
     }
+
+    /* Styling of the form-field component */
+
+    .maf-form-field {
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+
+        .label, .value {
+            color: $maf-color-primary;
+            text-align: left;
+            height: 100%;
+            margin-top: auto;    // Center horizontally
+            margin-bottom: auto; // Center horizontally
+        }
+
+        /* Style of label inside a form field */
+        .label {
+            font-weight: $maf-font-weight-label;
+            width: $maf-width-label;
+        }
+
+        /* Style of value inside a form field */
+        .value {
+            flex-grow: 1;
+            padding: .25em;
+            &:not(.readonly) {
+                background-color: $maf-color-input;
+                border-style: solid;
+                border-width: 1px; 
+                border-color: $maf-color-primary-light;
+                border-radius: $maf-border-radius;
+            }
+        }
+    }
+
+    // .form-field {
+    //     width: 100%;
+    //     display: flex;
+
+    //     .label, .value {
+    //         text-align: left;
+    //         margin-top: auto;    // Center horizontally
+    //         margin-bottom: auto; // Center horizontally
+    //     }
+
+    //     /* Style of label inside a form field */
+    //     .label {
+    //         color: green; /* ToDo */
+    //         background-color: aquamarine;
+    //         width: 30%;
+
+    //     }
+
+    //     /* Style of value inside a form field */
+    //     .value {
+    //         :not(.readonly) {
+    //             background-color: $maf-color-input;
+    //         }
+    //         padding: $maf-padding-input;
+    //         width: 100%;
+    //         // max-width: 70%;
+    //     }
+    // }
 }

@@ -1,7 +1,7 @@
 import { Directive, Input, OnInit } from '@angular/core';
 import { ControlContainer, FormGroup, FormGroupDirective } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { ConfigurationService, Context } from '../services/configuration.service';
+import { ConfigurationService, Context } from 'src/shared/global/services/configuration.service';
 
 @Directive({
   selector: '[entity]'

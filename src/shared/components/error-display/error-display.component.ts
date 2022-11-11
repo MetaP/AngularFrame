@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
 import { BehaviorSubject, map, mergeMap, Observable, Subject, switchMap, tap } from 'rxjs';
-import { MessagesService } from 'src/shared/services/messages.service';
+import { MessagesService } from 'src/shared/global/services/messages.service';
 
 @Component({
   selector: 'maf-error-display',

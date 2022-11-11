@@ -1,14 +1,17 @@
 <h1>AddressComponent</h1>
-<hr>
-<maf-form entity="Address" [formGroup]="formGroup">
-    <maf-text attribute="line1" readonly="true" disabled="false"></maf-text>
-    <maf-selection></maf-selection>
-    <hr>
-    <maf-form-status></maf-form-status>
-</maf-form>
 <!-- <form entity="Address" [formGroup]="formGroup">
+    <maf-text attribute="comment" readonly></maf-text>
     <maf-text attribute="line1"></maf-text>
     <maf-selection></maf-selection>
     <hr>
     <maf-form-status></maf-form-status>
+
+     [mafDataMap]="addressMap"
 </form> -->
+<maf-form [mafDataMap]="addressMap" context="Address" >
+    <maf-text mafAttribute="line1"></maf-text>
+    <maf-text mafAttribute="line2"></maf-text>
+    <maf-text mafAttribute="comment"></maf-text>
+    <!-- <maf-selection></maf-selection> -->
+    <maf-form-status [formGroup]="formGroup"></maf-form-status>
+</maf-form>

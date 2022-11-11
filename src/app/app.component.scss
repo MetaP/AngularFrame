@@ -1,0 +1,6 @@
+@use '/src/assets/css/framework';
+
+div {
+    background-color: lightblue;
+    padding: framework.$maf-spacing-form;
+}

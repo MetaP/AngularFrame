@@ -1,6 +1,6 @@
 import { AfterViewInit, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, OnInit, Type, ViewContainerRef } from '@angular/core';
 import { AbstractControl, NgControl } from '@angular/forms';
-import { DummyComponent } from '../components/dummy/dummy.component';
+import { DummyComponent } from '../../components/dummy/dummy.component';
 
 @Directive({
   selector: '[mafErrorDisplay]'

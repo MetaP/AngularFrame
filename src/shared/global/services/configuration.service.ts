@@ -37,8 +37,10 @@ function getFakeTranslation(context: Context, key?: string): string {
     switch(context) {
       case 'Address': {
         switch(key) {
-          case 'natural': return "Natuurlijk getal";
-          case 'line1': return "Lijn 1";
+          case 'natural': return "Natuurlijk getal:";
+          case 'line1': return "Lijn 1:";
+          case 'line2': return "Lijn 2:";
+          case 'comment': return "Commentaar:";
         }
       }
     }

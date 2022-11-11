@@ -1,7 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ControlContainer, FormGroup } from '@angular/forms';
+import { Component, HostBinding, Input, OnInit, Optional } from '@angular/core';
+import { ControlContainer, FormGroup, FormGroupDirective } from '@angular/forms';
 import { combineLatest, map, Observable, Subscription } from 'rxjs';
+import { DataMapDirective } from '../directives/data-map.directive';
 
+/**
+ * The FormGroup linked to this form can either be specified via the DataMapDirective (mafDataMap attribute) or
+ * ControlContainer direcive (formGroup and related attributes).
+ */
 @Component({
   selector: 'maf-form',
   templateUrl: './form.component.html',
@@ -9,28 +14,27 @@ import { combineLatest, map, Observable, Subscription } from 'rxjs';
 })
 export class FormComponent implements OnInit {
 
+  // Give the component a class with the same name, so that we can attach the styling to 
+  // the class (.maf-form) instead of to the element type (maf-form).
+  @HostBinding('class') class = 'maf-form'; // We assing the component 
+
   private _formGroup!: FormGroup;
   @Input() get formGroup(): FormGroup {
     return this._formGroup;
   }
   set formGroup(value: FormGroup) {
-    console.log('** set formGroup **');
     if (this._formGroup !== value) {
 
       this._formGroup = value;
 
       /* Conmbine the valueChanges and statusChanges observables to calculate the allowSave observable */
       const formIsDirty$ = value.valueChanges.pipe(
-        // tap(dirty => console.log(`** Dirty: ${dirty} **`)),
         map(() => value.dirty));
 
       const formIsValid$ = value.statusChanges.pipe(
-        // tap(status => console.log(`** Status: ${status} **`)),
         map(status => status === "VALID"));
 
       this.allowSave$ = combineLatest([formIsDirty$, formIsValid$]).pipe(
-        // tap(([dirty, valid]) => 
-        //   console.log(`** Dirty: ${dirty} Valid: ${valid}`)),
         map(([dirty, valid]) => 
           dirty && valid)
         );
@@ -39,10 +43,6 @@ export class FormComponent implements OnInit {
 
   @Input() formControlName?: string;
 
-  // private formIsDirty!: Observable<boolean>;
-  // private formIsValid!: Observable<boolean>;
-
-  //private _allowSave!
   allowSave$!: Observable<boolean>;  
 
   translations = {
@@ -54,21 +54,18 @@ export class FormComponent implements OnInit {
 
 
   constructor(
-    private controlContainer?: ControlContainer
-  ) { 
-    console.log('** constructor **');
-  }
+    @Optional() private dataMap?: DataMapDirective,
+    @Optional() private controlContainer?: ControlContainer
+  ) {}
 
   ngOnInit(): void {
-    // console.log('** ngOnInit **');
-
-    // If the formGroup is not specified as input
-    // Try to get it as the control with name formControlName from the parent FormGroup
-    if (!this.formGroup && this.formControlName)
-    {
-      const parentFormGroup = <FormGroup>this.controlContainer?.control;
-      this.formGroup = <FormGroup>parentFormGroup.controls[this.formControlName];
+    if (this.controlContainer instanceof FormGroupDirective) {
+      this.formGroup = this.controlContainer.form;
     }
+    else if (this.dataMap) {
+      this.formGroup = this.dataMap.formGroup;
+    }
+    else throw new Error('<maf-form> is not bound. Specify a binding either via a "mafDataMap" attribute or via a "formGroup" or "formControlName" attribute.');
   }
 
   onCancel() {
