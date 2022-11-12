@@ -6,8 +6,7 @@ import { AttributeDirective } from 'src/shared/form/directives/attribute.directi
 
 @Component({
   selector: 'maf-form-field',
-  templateUrl: './form-field.component.html',
-  styleUrls: ['./form-field.component.scss']
+  templateUrl: './form-field.component.html'
 })
 export class FormFieldComponent /* implements OnInit */{
 

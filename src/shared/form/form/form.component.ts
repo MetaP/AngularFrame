@@ -9,8 +9,7 @@ import { DataMapDirective } from '../directives/data-map.directive';
  */
 @Component({
   selector: 'maf-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  templateUrl: './form.component.html'
 })
 export class FormComponent implements OnInit {
 

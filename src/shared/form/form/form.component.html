@@ -1,13 +1,7 @@
-<!-- <section class="maf-form"> -->
-    <!-- <div class="maf-content-panel"> -->
-        <form [formGroup]="formGroup">
-            <ng-content>
-
-            </ng-content>
-       </form>
-    <!-- </div> -->
-    <div class="maf-buttons-panel">
-        <button (click)="onCancel()" class="maf">{{translations.cancel}}</button>
-        <button #saveButton (click)="onSave()" [disabled]="!(allowSave$ | async)" class="maf default">{{translations.save}}</button>
-    </div>
-<!-- </section> -->
+<form [formGroup]="formGroup" spellcheck="false">
+    <ng-content></ng-content>
+</form>
+<div class="maf-buttons-panel">
+    <button (click)="onCancel()" class="maf">{{translations.cancel}}</button>
+    <button #saveButton (click)="onSave()" [disabled]="!(allowSave$ | async)" class="maf default">{{translations.save}}</button>
+</div>

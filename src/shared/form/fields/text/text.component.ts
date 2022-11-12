@@ -4,8 +4,7 @@ import { FormFieldBase } from '../form-field-base.super';
 
 @Component({
   selector: 'maf-text',
-  templateUrl: './text.component.html',
-  styleUrls: ['./text.component.scss']
+  templateUrl: './text.component.html'
 })
 export class TextComponent extends FormFieldBase {
 

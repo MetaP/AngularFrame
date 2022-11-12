@@ -9,7 +9,7 @@ $maf-font-weight-label: 600;
 $maf-font-weight-menu: 600;
 
 $maf-width-label: 10em; // The standard width of a form field label.
-$maf-spacing-form: .25em;
+$maf-spacing-form: .5em;
 $maf-spacing-move: .15em;
 
 $maf-border-radius: 5px;
@@ -29,6 +29,13 @@ $maf-button-height: 2em;
 
     .disabled {
         color: lightgray !important;
+    }
+
+    // Put a darker outline around input controls if they have the focus.
+    input:focus {
+        outline-color: $maf-color-primary;
+        outline-style: solid;
+        outline-width: 1px;
     }
 
     maf-form-status {
