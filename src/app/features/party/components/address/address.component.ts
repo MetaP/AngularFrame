@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MetaEntity, StandardValidation } from 'src/shared/data/data';
 import { DataMap } from 'src/shared/data/data-model';
 // import { AddressMap } from '../../model/address-map';
 import { AddressFormInteraction } from './address-from-interaction';
@@ -25,13 +26,24 @@ export class AddressComponent implements OnInit {
     // this.line1FormControl = this.formGroup.controls['line1'] as FormControl;
     // this.line1FormControl.disable();
 
+    const addressEntity: MetaEntity = {
+      name: 'Address',
+      attributes: {
+          line1: { validation: [StandardValidation.required]},
+          line2: {},
+          postalCode: {},
+          countryCode: {},
+          comment: { readonly: true }
+      }
+    }
+
     const addressMap = new DataMap({
       comment: "Is this working?",
       line1: "Bovenstraart 39",
       line2: "",
       postalCode: 3210,
       countryCode: "BE"
-    }, ['comment']);
+    }, addressEntity);
 
     
     this.addressMap = addressMap;
