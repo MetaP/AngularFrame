@@ -1,7 +1,7 @@
-<form [formGroup]="formGroup" spellcheck="false">
+<form [formGroup]="formGroup" spellcheck="false" (ngSubmit)="onSubmit()">
     <ng-content></ng-content>
+    <div class="maf-buttons-panel">
+        <button type="button" (click)="onCancel()" class="maf">{{translations.cancel}}</button>
+        <button type="submit" #saveButton [disabled]="!(allowSave$ | async)" class="maf default">{{translations.save}}</button>
+    </div>
 </form>
-<div class="maf-buttons-panel">
-    <button (click)="onCancel()" class="maf">{{translations.cancel}}</button>
-    <button #saveButton (click)="onSave()" [disabled]="!(allowSave$ | async)" class="maf default">{{translations.save}}</button>
-</div>

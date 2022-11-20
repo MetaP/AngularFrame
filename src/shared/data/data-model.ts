@@ -29,14 +29,21 @@ export class DataMap  {
         return (key in this.readonlyValues);
     }
 
-    constructor(entity: Entity, metaEntity: MetaEntity | null = null) {
+    get value(): Entity {
+        return {...this.initialValue, ...this.formGroup.value }; 
+    }
+
+    constructor(
+        private initialValue: Entity, 
+        metaEntity: MetaEntity | null = null
+    ) {
 
         this.readonlyValues = {};
 
         const controls = {} as any;
 
-        for (var key in entity) {
-            const attribute = entity[key];
+        for (var key in initialValue) {
+            const attribute = initialValue[key];
 
             if (metaEntity) {
                 // If there is metadata for the current attribute...

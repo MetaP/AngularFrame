@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit, Optional } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, OnInit, Optional, Output } from '@angular/core';
 import { ControlContainer, FormGroup, FormGroupDirective } from '@angular/forms';
 import { combineLatest, map, Observable, Subscription } from 'rxjs';
 import { DataMapDirective } from '../directives/data-map.directive';
@@ -42,6 +42,16 @@ export class FormComponent implements OnInit {
 
   @Input() formControlName?: string;
 
+  /**
+   * The event raised when to indicate that the form's current state shoud be saved.
+   */
+  @Output() save = new EventEmitter<any>();
+
+  /**
+   * The event raised when to indicate that the form is closed without saving its current state.
+   */
+  @Output() cancel = new EventEmitter();
+
   allowSave$!: Observable<boolean>;  
 
   translations = {
@@ -58,20 +68,23 @@ export class FormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.controlContainer instanceof FormGroupDirective) {
-      this.formGroup = this.controlContainer.form;
-    }
-    else if (this.dataMap) {
+    if (this.dataMap) {
       this.formGroup = this.dataMap.formGroup;
-    }
-    else throw new Error('<maf-form> is not bound. Specify a binding either via a "mafDataMap" attribute or via a "formGroup" or "formControlName" attribute.');
+    } else if (this.controlContainer instanceof FormGroupDirective) {
+      this.formGroup = this.controlContainer.form;
+    } else throw new Error('<maf-form> is not bound. Specify a binding either via a "mafDataMap" attribute or via a "formGroup" or "formControlName" attribute.');
   }
 
   onCancel() {
     console.log('** onCancel **');
+    this.formGroup.reset
+    this.cancel.emit();
   }
   
-  onSave() {
-    console.log('** onSave **');
+  onSubmit() {
+    console.log('** onSubmit **');
+
+    const value = (this.dataMap ? this.dataMap.mafDataMap.value : this.formGroup.value);
+    this.save.emit(value);
   }
 }
