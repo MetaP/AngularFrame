@@ -154,10 +154,12 @@ $maf-button-height: 2em;
             grid-row-start: 2;
             grid-row-end: 3;
 
-            margin-top: $maf-padding-input-vertical;
             padding-left: $maf-border-width + $maf-padding-input-horizontal;
 
             .error {
+                &:first-child { // Only add spacing if there are errors!
+                    margin-top: $maf-spacing-form;
+                }
                 width: 100%;
                 color: $maf-color-error;
                 font-size: $maf-font-size-note;
