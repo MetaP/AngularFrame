@@ -4,9 +4,16 @@ $maf-color-primary-dark:rgb(0, 0, 10);
 $maf-color-primary: darkblue;
 $maf-color-primary-lighter: rgb(50, 50, 150);
 $maf-color-primary-light: rgb(225, 225, 255);
+$maf-color-error: red;
+
+$maf-font-family: Arial, Helvetica, sans-serif;
+// $maf-font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 $maf-font-weight-label: 600;
 $maf-font-weight-menu: 600;
+
+$maf-font-size: 12px;
+$maf-font-size-note: .75em;
 
 $maf-width-label: 10em; // The standard width of a form field label.
 $maf-spacing-form: .5em;
@@ -14,18 +21,27 @@ $maf-spacing-move: .15em;
 
 $maf-border-radius: 5px;
 
-$maf-padding-input: .25em;
+$maf-padding-input-vertical: 0em;
+$maf-padding-input-horizontal: 3px;
 
 $maf-margin: .5em;
+
+$maf-border-width: 1px;
 
 $maf-button-width: 10em;
 $maf-button-height: 2em;
 
+
 .maf-standard-theme {
 
-    // font-family: Arial, Helvetica, sans-serif;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 12px;
+    font-family: $maf-font-family;
+    font-size: $maf-font-size;
+
+    input {
+        font-family: $maf-font-family;
+        font-size: $maf-font-size;
+        padding: $maf-padding-input-vertical $maf-padding-input-horizontal;
+    }
 
     .disabled {
         color: lightgray !important;
@@ -97,64 +113,55 @@ $maf-button-height: 2em;
     /* Styling of the form-field component */
 
     .maf-form-field {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: $maf-width-label auto;
+        grid-template-rows: 2em auto;
         box-sizing: border-box;
 
         .label, .value {
             color: $maf-color-primary;
             text-align: left;
-            height: 100%;
-            margin-top: auto;    // Center horizontally
-            margin-bottom: auto; // Center horizontally
         }
 
         /* Style of label inside a form field */
         .label {
+            // background-color: greenyellow; //-----
+            grid-column-start: 1;
+            grid-column-end: 2;
             font-weight: $maf-font-weight-label;
-            width: $maf-width-label;
+            padding-top: .25em;
         }
 
         /* Style of value inside a form field */
         .value {
             flex-grow: 1;
-            padding: .25em;
             &:not(.readonly) {
                 background-color: $maf-color-input;
                 border-style: solid;
-                border-width: 1px; 
+                border-width: $maf-border-width; 
                 border-color: $maf-color-primary-light;
                 border-radius: $maf-border-radius;
             }
+            &.readonly{
+                padding: .25em 0 0 $maf-border-width + $maf-padding-input-horizontal ;
+            }
+        }
+
+        .errors {
+            // background-color: yellowgreen; //----------------------
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 3;
+
+            margin-top: $maf-padding-input-vertical;
+            padding-left: $maf-border-width + $maf-padding-input-horizontal;
+
+            .error {
+                width: 100%;
+                color: $maf-color-error;
+                font-size: $maf-font-size-note;
+            }
         }
     }
-
-    // .form-field {
-    //     width: 100%;
-    //     display: flex;
-
-    //     .label, .value {
-    //         text-align: left;
-    //         margin-top: auto;    // Center horizontally
-    //         margin-bottom: auto; // Center horizontally
-    //     }
-
-    //     /* Style of label inside a form field */
-    //     .label {
-    //         color: green; /* ToDo */
-    //         background-color: aquamarine;
-    //         width: 30%;
-
-    //     }
-
-    //     /* Style of value inside a form field */
-    //     .value {
-    //         :not(.readonly) {
-    //             background-color: $maf-color-input;
-    //         }
-    //         padding: $maf-padding-input;
-    //         width: 100%;
-    //         // max-width: 70%;
-    //     }
-    // }
 }

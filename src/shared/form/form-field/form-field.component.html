@@ -1,5 +1,8 @@
-<div class="label">{{caption$ |async}}</div>
+<div class="label">{{caption$ | async}}</div>
 <div *ngIf="readonly; else editTemplate" class="value readonly">{{valueRepresentation$ | async}}</div>
+<div class="errors">
+    <div class="error" *ngFor="let message of errorMessages$|async">{{message}}</div>
+</div>
 
 <ng-template #editTemplate>
     <ng-content></ng-content>
