@@ -13,7 +13,7 @@ Element: \<maf-selector\>
 
 Results in:
 
-    ![selector image](./selector.png)
+![selector image](./selector.png)
 
 ## Usage
 Add an `<option>` element for each value of the set. Specify its value via the `value` property and the text to represent it via either the `<label>` or `<labelId>` property.
