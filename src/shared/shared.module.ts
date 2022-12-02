@@ -4,9 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DummyComponent } from './components/dummy/dummy.component';
 import { ErrorDisplayComponent } from './components/error-display/error-display.component';
+import { DataBoundModule } from './data-bound/data-bound.module';
 import { MetaPFormsModule } from './form/metap-forms.module';
-
-
 
 @NgModule({
   exports: [
@@ -16,6 +15,7 @@ import { MetaPFormsModule } from './form/metap-forms.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    DataBoundModule,
     MetaPFormsModule
   ],
 
@@ -28,6 +28,7 @@ import { MetaPFormsModule } from './form/metap-forms.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    DataBoundModule,
     MetaPFormsModule
   ]
 })

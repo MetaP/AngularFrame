@@ -12,6 +12,8 @@ import { AddressFormInteraction } from './address-from-interaction';
 })
 export class AddressComponent implements OnInit {
 
+  selected: any;
+
   formGroup: FormGroup;
 
   // line1FormControl: FormControl;

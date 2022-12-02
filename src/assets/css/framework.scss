@@ -4,6 +4,12 @@ $maf-color-primary-dark:rgb(0, 0, 10);
 $maf-color-primary: darkblue;
 $maf-color-primary-lighter: rgb(50, 50, 150);
 $maf-color-primary-light: rgb(225, 225, 255);
+
+$maf-color-primary-bright: lightblue;
+
+$maf-color-secondary: ivory;
+$maf-color-scecondary-bright: white;
+
 $maf-color-error: red;
 
 $maf-font-family: Arial, Helvetica, sans-serif;
@@ -28,8 +34,10 @@ $maf-margin: .5em;
 
 $maf-border-width: 1px;
 
-$maf-button-width: 10em;
-$maf-button-height: 2em;
+$maf-button-width-standard: 8em;
+$maf-button-height-standard: 2em;
+$maf-button-move: 1px;
+$-maf-button-move: 1px;
 
 
 .maf-standard-theme {
@@ -54,11 +62,62 @@ $maf-button-height: 2em;
         outline-width: 1px;
     }
 
-    maf-form-status {
-        background-color: pink;
+    /******************
+     * Generic styles *
+     ******************/
+
+    .button-base {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        padding: $maf-margin;
+        min-width: $maf-button-width-standard;
+
+        // Reduce opacity, so that it can increase when hovered.
+        opacity: .7;
+
+        background-color: $maf-color-primary;
+        border: 1px solid $maf-color-primary-dark;
+        color: $maf-color-secondary;
+        font-size: $maf-font-size;
+        font-weight: $maf-font-weight-menu;
+        cursor: pointer;
+
+        &:disabled {
+            opacity: .5;
+        }
+
+        &:hover:enabled { // When enabled button is hovered...
+            opacity: 1;
+        }
+
+        &:active:enabled { // When enabled button is clicked...
+            transform: translate($maf-button-move, $maf-button-move); // Move right-down
+            color: $maf-color-scecondary-bright; // Make text brighter
+            text-shadow: 0 0 2px $maf-color-secondary; // Glow
+        }
+    }
+
+    .button-standard {
+        @extend .button-base;
+        border-radius: $maf-border-radius;
+    }
+
+    $radius: 2em;
+    .button-with-round-sides {
+        @extend .button-base;
+
+        border-radius: $radius;
+
+        // Set padding equal to border-radius to avoid text in rouded parts.
+        padding-left: $radius * .5;
+        padding-right: $radius * .5;
     }
     
-    /* Styling of the form component */
+    /******************
+     * form component *
+     ******************/
 
     .maf-form {
         display: flex;
@@ -86,28 +145,8 @@ $maf-button-height: 2em;
     }
 
     button.maf {
-        padding: $maf-margin;
-        min-width: 8em;
-        min-height: 2em;
-        font-weight: $maf-font-weight-menu;
-
-        background-color: $maf-color-primary;
-        color: $maf-color-input;
+        @extend .button-standard;
         border-radius: $maf-border-radius;
-        border: none;
-        margin-bottom: $maf-spacing-form;
-        box-shadow: 0 $maf-spacing-form $maf-color-primary-dark;
-        opacity: .8;
-        &:disabled {
-            opacity: .5;
-        }
-        &:hover:enabled {
-            opacity: 1;
-        }
-        &:active:enabled {
-            box-shadow: 0 $maf-spacing-move $maf-color-primary-dark;
-            transform: translateY($maf-spacing-move);
-        }
     }
 
     /* Styling of the form-field component */
@@ -125,7 +164,6 @@ $maf-button-height: 2em;
 
         /* Style of label inside a form field */
         .label {
-            // background-color: greenyellow; //-----
             grid-column-start: 1;
             grid-column-end: 2;
             font-weight: $maf-font-weight-label;
@@ -148,7 +186,6 @@ $maf-button-height: 2em;
         }
 
         .errors {
-            // background-color: yellowgreen; //----------------------
             grid-column-start: 2;
             grid-column-end: 3;
             grid-row-start: 2;
@@ -163,6 +200,43 @@ $maf-button-height: 2em;
                 width: 100%;
                 color: $maf-color-error;
                 font-size: $maf-font-size-note;
+            }
+        }
+    }
+    
+    /***********************
+     * FormStatusComponent *
+     ***********************/
+
+    .maf-form-status {
+        background-color: pink;
+    }
+    
+    /*********************
+     * SelectorComponent *
+     *********************/
+
+    .maf-selector {
+        .buttons-container {
+
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: $maf-spacing-form;
+            padding: $maf-spacing-form;
+        
+            // background-color: lightblue;
+
+            .option {
+                @extend .button-with-round-sides;
+                // // Makes option buttons same size and fill the parent's width.
+                // width: 100%;
+
+                &.selected {
+                    opacity: 1;
+                    box-shadow: 0px 0px 7px $maf-color-primary-lighter;
+                }
             }
         }
     }

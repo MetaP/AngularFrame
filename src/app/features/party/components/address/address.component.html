@@ -1,4 +1,11 @@
 <h1>AddressComponent</h1>
+<maf-selector [(value)]="selected">
+    <maf-option labelId="First" value="A"></maf-option>
+    <maf-option label="Second" value="B"></maf-option>
+    <maf-option label="Third" value="C"></maf-option>
+    <!-- <maf-option label="Fourth: very long text to be split over multiple lines" value="D"></maf-option> -->
+</maf-selector>
+<span>Selected: {{selected}}</span>
 <!-- <form entity="Address" [formGroup]="formGroup">
     <maf-text attribute="comment" readonly></maf-text>
     <maf-text attribute="line1"></maf-text>
@@ -9,6 +16,13 @@
      [mafDataMap]="addressMap"
 </form> -->
 <maf-form [mafDataMap]="addressMap" context="Address" (save)="onSave($event)">
+    <maf-selector [(value)]="selected">
+        <maf-option labelId="First" value="A"></maf-option>
+        <maf-option label="Second" value="B"></maf-option>
+        <maf-option label="Third" value="C"></maf-option>
+        <!-- <maf-option label="Fourth: very long text to be split over multiple lines" value="D"></maf-option> -->
+    </maf-selector>
+    
     <maf-text mafAttribute="line1"></maf-text>
     <maf-text mafAttribute="comment"></maf-text>
     <maf-text mafAttribute="line2"></maf-text>
