@@ -20,6 +20,8 @@ export class AddressComponent implements OnInit {
 
   addressMap : DataMap;
 
+  postalCode: FormControl;
+
   constructor(
     // private interaction: AddressFormInteraction,
     // private fb: FormBuilder
@@ -50,6 +52,8 @@ export class AddressComponent implements OnInit {
     
     this.addressMap = addressMap;
     this.formGroup = addressMap.formGroup;
+
+    this.postalCode = this.formGroup.controls["postalCode"] as FormControl;
   }
 
   ngOnInit(): void {

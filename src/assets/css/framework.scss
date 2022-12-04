@@ -240,4 +240,9 @@ $-maf-button-move: 1px;
             }
         }
     }
+
+    /* Numbers */
+    input[mafNatural] {
+        text-align: right;
+    }
 }
