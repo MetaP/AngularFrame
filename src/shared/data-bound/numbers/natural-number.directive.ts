@@ -1,5 +1,6 @@
-import { Directive, ElementRef, HostListener, Input, Renderer2 } from "@angular/core";
+import { Directive, ElementRef, HostListener, Inject, Input, Renderer2 } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { Configuration, CONFIGURATION } from "src/shared/configuration/configuarion";
 import { acceptNatural, insertSeparator } from "src/shared/utility";
 
 @Directive({
@@ -19,13 +20,13 @@ import { acceptNatural, insertSeparator } from "src/shared/utility";
 })
 export class NaturalNumberDirective implements ControlValueAccessor {
 
-    @Input() separator = '.';
+    @Input() groupSeparator: string | undefined;
 
     /**
      * If true, the display is only formatted when this control doesn't have the input focus.
      * If false, formatting is always applied, even when typing in this control. 
      */
-    @Input() formatOnBlur = false;
+    @Input() formatOnBlur: boolean| undefined;
 
     private _value: number | undefined;
     private get value(): number | undefined {
@@ -58,9 +59,12 @@ export class NaturalNumberDirective implements ControlValueAccessor {
 
     constructor(
         private renderer: Renderer2, 
-        private elementRef: ElementRef
+        private elementRef: ElementRef,
+        @Inject(CONFIGURATION) configuration: Configuration
     ) {
         this.inputElement = elementRef.nativeElement as HTMLInputElement;
+        if (this.formatOnBlur === undefined) this.formatOnBlur = configuration.numberPresentation.formatOnBlur;
+        if (this.groupSeparator === undefined) this.groupSeparator = configuration.numberPresentation.groupSeparator;
     }
 
     /* ControlValueAccessor interface ++ */
@@ -132,11 +136,11 @@ export class NaturalNumberDirective implements ControlValueAccessor {
     }
 
     private unformatDisplay(display: string): string {
-        return display.replaceAll(this.separator, '');
+        return display.replaceAll(this.groupSeparator!, '');
     }
 
     private formatDisplay(display: string): string {
-        return insertSeparator(display, this.separator);
+        return insertSeparator(display, this.groupSeparator);
     }
 
     private formatValue(value: number | undefined): string {

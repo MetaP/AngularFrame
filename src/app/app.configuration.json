@@ -1,0 +1,7 @@
+{
+    "numberPresentation": {
+        "formatOnBlur": false,
+        "decimalSeparator": ".",
+        "groupSeparator": " "
+    }
+}
