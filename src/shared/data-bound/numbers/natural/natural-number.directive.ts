@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Inject, Input, Renderer2 } from "@angular/core";
+import { Directive, ElementRef, Inject, Input, Renderer2 } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { Configuration, CONFIGURATION } from "src/shared/configuration/configuarion";
 import { acceptNatural, insertSeparator } from "src/shared/utility";
@@ -63,8 +63,10 @@ export class NaturalNumberDirective implements ControlValueAccessor {
         @Inject(CONFIGURATION) configuration: Configuration
     ) {
         this.inputElement = elementRef.nativeElement as HTMLInputElement;
-        if (this.formatOnBlur === undefined) this.formatOnBlur = configuration.numberPresentation.formatOnBlur;
-        if (this.groupSeparator === undefined) this.groupSeparator = configuration.numberPresentation.groupSeparator;
+
+        // Set the defaults for the inputs. (Will be overridden [before ngOnInit] if specified.)
+        this.formatOnBlur = configuration.numberPresentation.formatOnBlur;
+        this.groupSeparator = configuration.numberPresentation.groupSeparator;
     }
 
     /* ControlValueAccessor interface ++ */

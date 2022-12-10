@@ -1,6 +1,6 @@
 # AngularFrame
 
-With this project I want to share my [Angular](https://angular.io/) experience.
+An [Angular](https://angular.io/) application framework for [model-driven development](/doc/guide/model-or-domain-driven.md)
 
 Currently, it still is in an embryonic state.
 
@@ -11,6 +11,7 @@ Currently, it still is in an embryonic state.
 - Promote the notion of domain-driven GUI development
 - Raise the level of abstraction to make artifacts more reusable
 
-## Available Components
-Check the [Overview](/doc/reference/overview.md).
+## Documentation
+- [Reference](/doc/reference/reference.md) - Overview of the available framework features.
+- [Guide](/doc/guide/guide.md) - Discusses the design and implementation of framework features, provides design patterns and best practices and proposes conventions.
 
