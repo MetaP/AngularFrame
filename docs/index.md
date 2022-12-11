@@ -13,5 +13,5 @@ Currently, this project is still in an embryonic state.
 - Raise the level of abstraction to make artifacts more reusable
 
 ## Documentation
-- [Reference](/doc/reference/reference.md) - Overview of the available framework features.
-- [Guide](/doc/guide/guide.md) - Discusses the design and implementation of framework features, provides design patterns and best practices and proposes conventions.
+- [Reference](./reference/reference.md) - Overview of the available framework features.
+- [Guide](./guide/guide.md) - Discusses the design and implementation of framework features, provides design patterns and best practices and proposes conventions.
