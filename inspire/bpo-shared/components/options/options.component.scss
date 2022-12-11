@@ -1,0 +1,42 @@
+@use '_variables';
+
+.error {
+    color: red;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.option-button-container {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    // align-content: center;
+    align-items: center;
+
+    .option-button {
+        margin: .5em;
+        width: 100%; // Makes the buttons same size
+        max-width: 16em;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        padding: .5em 1em;
+
+        border: 1px solid variables.$secondaryColor;
+        border-radius: 2em;
+
+        color: variables.$secondaryColor;
+        background-color: white;
+        font-size: variables.$btn-font-size-base;
+        font-weight: variables.$btn-font-weight;
+        cursor: pointer;
+
+        &.active {
+            color: white;
+            background-color: variables.$secondaryColor;
+        }
+    }
+}

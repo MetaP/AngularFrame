@@ -1,0 +1,21 @@
+<section>
+    <ng-template>
+    </ng-template>
+    <ng-container [ngSwitch]="look">
+        <!-- <ng-container *ngSwitchCase="OptionsLook.RoundedSwitchButtons">
+            <div class="option-button-container">
+                    <div *ngFor="let option of options; index as i" class="option-button" [ngClass]="{'active': option.value === value}"
+                    (click)="onClick(i)">{{(option.labelId | translate) + (option.suffix ?? '')}}</div>
+            </div>
+        </ng-container> -->
+        <ng-container *ngSwitchCase="OptionsLook.RoundedSwitchButtons">
+            <div class="option-button-container">
+                <div *ngFor="let option of options; index as i" class="option-button" [ngClass]="{'active': option.value === value}"
+                (click)="onClick(i)">{{(option.labelId | translate) + (option.suffix ?? '')}}</div>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+            <div class="error">** OptionsLook.{{look}} is not yet implemented. **</div>
+        </ng-container>
+    </ng-container>
+</section>

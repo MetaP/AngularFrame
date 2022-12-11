@@ -1,0 +1,4 @@
+<div appError>
+    <input #input type="text" class="form-control" [class.is-invalid]="isInvalid" (focus)="onFocus()" (blur)="onBlur()"
+        (keypress)="onKeypress($event)" (beforeinput)="onBeforeInput($event)" (input)="onInput()">
+</div>
