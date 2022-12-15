@@ -15,14 +15,27 @@
 ## Angular
 
 - Directives
-    - Add class to host element - @HostBinding('class') - see form-field.directive
+  - Handle events of host element
+    - host: { '(fblur)': 'onBlur($event)'}
+    - see NaturalNumberDirective
+  - Add class to host element - @HostBinding('class') - see form-field.directive
+  - Get bound FormControl as injected NgControl:
+    - const control = <AbstractControl>this.ngControl.control;
+    - see error-display.directive, form-control.directive
 - Components
+  - Series of articles on how to create components
+    - It is often a good idea to collect chunks of code in a directive or component (also if only used once)
+    - focus: internal &harr; external
+      - background: are there focusable and non-focusable components?
+      - background: set tabindex
+    - types of components
+    - "inheritance" or composition
 
 ### Custom "Widgets"
 - Add standard form binding
     - inject ControlContainer
     - See [Access FormControl inside custom Angular Component](https://stackoverflow.com/questions/59513861/access-formcontrol-inside-custom-angular-component) [StackOverflow]
-- X
+-  
 
 ### Patterns
 - Observable binding
