@@ -1,5 +1,6 @@
 # Guide
 ## Framework features
+- [Selector](./selector.md)
 - [Numeric data entry](./numeric-data-entry.md)
 
 ## Background
