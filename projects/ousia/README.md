@@ -22,3 +22,7 @@ Run `ng test ousia` to execute the unit tests via [Karma](https://karma-runner.g
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+The term "ousia" originates from ancient Greek philosophy, meaning "essence" or "substance." It refers to the fundamental nature or underlying reality of something. In the context of our framework, Ousia embodies the idea of capturing the core essence of your application.
+
+By providing a high-level abstraction for building Angular applications, Ousia allows developers to focus on the essential elements that define their user interfaces and interactions. Just as the essence of a concept shapes its identity, Ousia helps you distill your application's core features, enabling you to create rich, meaningful experiences with clarity and simplicity.

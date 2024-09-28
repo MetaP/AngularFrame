@@ -5,3 +5,4 @@
 export * from './lib/ousia.service';
 export * from './lib/ousia.component';
 export * from './lib/ousia.module';
+export * from './lib/namespace/namespace.directive'
