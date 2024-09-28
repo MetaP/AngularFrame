@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
 import { NamespaceDirective } from 'ousia';
-import { OusiaService } from 'ousia';
 
 @Component({
   selector: 'maf-try',
@@ -10,10 +9,6 @@ import { OusiaService } from 'ousia';
 export class TryComponent implements AfterViewInit {
 
   @ViewChildren(NamespaceDirective) namespaceDirectives?: QueryList<NamespaceDirective>;
-
-  constructor(ousiaService: OusiaService) {
-    ousiaService.test();
-  }
 
   ngAfterViewInit(): void {
     this.namespaceDirectives?.forEach(directive => {
