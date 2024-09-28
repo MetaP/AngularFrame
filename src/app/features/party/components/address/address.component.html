@@ -1,10 +1,10 @@
 <h1>AddressComponent</h1>
-<maf-selector [(value)]="selected">
+<maf-buttons-selector [(value)]="selected">
     <maf-option labelId="First" value="A"></maf-option>
     <maf-option label="Second" value="B"></maf-option>
     <maf-option label="Third" value="C"></maf-option>
     <!-- <maf-option label="Fourth: very long text to be split over multiple lines" value="D"></maf-option> -->
-</maf-selector>
+</maf-buttons-selector>
 <span>Selected: {{selected}}</span>
 <!-- <form entity="Address" [formGroup]="formGroup">
     <maf-text attribute="comment" readonly></maf-text>
@@ -16,14 +16,19 @@
      [mafDataMap]="addressMap"
 </form> -->
 <maf-form [mafDataMap]="addressMap" context="Address" (save)="onSave($event)">
-    <maf-selector [(value)]="selected">
+    <maf-buttons-selector [(value)]="selected">
         <maf-option labelId="First" value="A"></maf-option>
         <maf-option label="Second" value="B"></maf-option>
         <maf-option label="Third" value="C"></maf-option>
         <!-- <maf-option label="Fourth: very long text to be split over multiple lines" value="D"></maf-option> -->
-    </maf-selector>
+    </maf-buttons-selector>
+
+    <maf-list-selector [items]="items">
+        
+    </maf-list-selector>
 
     <label>Natural:</label>
+    <input type="text" pattern="d"/>
     <input type="text" mafNatural groupSeparator="'" [formControl]="postalCode"/>
 
 

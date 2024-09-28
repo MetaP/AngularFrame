@@ -7,8 +7,10 @@ import { MaterialNavigationComponent } from 'src/demo/material/material-navigati
 import { MaterialTableComponent } from 'src/demo/material/material-table/material-table.component';
 import { MaterialTreeComponent } from 'src/demo/material/material-tree/material-tree.component';
 import { AddressComponent } from './features/party/components/address/address.component';
+import { TryComponent } from 'src/try/try.component';
 
 const routes: Routes = [
+  { path: 'try', component: TryComponent },
   { path: 'demo', component: DemoComponent },
   { path: 'mat-address', component: MaterialAddressComponent},
   { path: 'mat-drag', component: MaterialDragDropComponent},

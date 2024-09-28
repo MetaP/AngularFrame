@@ -1,0 +1,14 @@
+<section>
+    <ng-container [ngSwitch]="look">
+        <ng-container *ngSwitchCase="SelectorLook.RoundedButtons">
+            <div class="buttons-container">
+                <button *ngFor="let option of options; index as i"
+                    class="option" [class.selected]="option.value === value"
+                    (click)="onClick(i)">{{option.label$ | async}}</button>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+            <div class="error">** OptionsLook.{{look}} is not yet implemented. **</div>
+        </ng-container>
+    </ng-container>
+</section>
