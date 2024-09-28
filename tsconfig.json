@@ -13,6 +13,9 @@
     "paths": {
       "metap-frame": [
         "dist/metap-frame"
+      ],
+      "ousia": [
+        "dist/ousia"
       ]
     },
     "noImplicitReturns": true,
