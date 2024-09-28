@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TryRoutingModule } from './try-routing.module';
 import { TryComponent } from './try.component';
+import { OusiaModule } from 'ousia';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { TryComponent } from './try.component';
   ],
   imports: [
     CommonModule,
+    OusiaModule,
     TryRoutingModule
   ]
 })

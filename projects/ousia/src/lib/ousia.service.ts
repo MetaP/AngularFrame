@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class OusiaService {
 
   constructor() { }
+
+  test() {
+    console.log(`** OusiaService.test() called **`);
+  }
 }

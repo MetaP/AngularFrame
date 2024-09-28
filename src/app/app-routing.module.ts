@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'mat-table', component: MaterialTableComponent},
   { path: 'mat-tree', component: MaterialTreeComponent},
   { path: 'address', component: AddressComponent },
-  { path: '', redirectTo: 'address', pathMatch:'full' }
+  { path: '', redirectTo: 'try', pathMatch:'full' }
 ];
 
 @NgModule({

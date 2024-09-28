@@ -9,6 +9,7 @@ import { Configuration, CONFIGURATION } from 'src/shared/configuration/configuar
 import { DefaultProvidersModule } from 'src/shared/default-providers.module';
 // import { FixedConfiguration } from 'src/shared/configuration/fixed-configuration';
 import jsonConfiguration from './app.configuration.json';
+import { TryModule } from 'src/try/try.module';
 
 
 // export const constConfiguration: Configuration = {
@@ -29,7 +30,8 @@ import jsonConfiguration from './app.configuration.json';
     
     AppRoutingModule,
     DemoModule,
-    PartyModule
+    PartyModule,
+    TryModule
   ],
   providers: [
     // { provide: CONFIGURATION, useExisting: FixedConfiguration }

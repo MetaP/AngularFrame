@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OusiaService } from 'ousia';
 
 @Component({
   selector: 'maf-try',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class TryComponent {
 
+  constructor(ousiaService: OusiaService) {
+    ousiaService.test();
+  }
 }
