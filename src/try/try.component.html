@@ -1,10 +1,20 @@
 <h1>Try</h1>
-<div #parent o-namespace="parent">
-    <div #child o-namespace="child">
-        Testing
-    </div>
-</div>
-<div>
-    <input type="number" min="0" max="5"/>
-    <input title="This is a title."/>
+
+<!-- <div o-namespace="parent">
+	<div o-namespace="child">
+		<o-field-label>
+			<input type="age" min="0" max="5" />
+		</o-field-label>
+		<input title="This is a title." />
+	</div>
+</div> -->
+
+<div o-namespace="parent">
+	<div o-namespace="child">
+		<form [formGroup]="formGroup">
+			<o-field-label>
+				<input formControlName="age" type="number"/>
+			</o-field-label>
+		</form>
+	</div>
 </div>

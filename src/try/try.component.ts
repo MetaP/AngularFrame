@@ -1,18 +1,16 @@
-import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
-import { NamespaceDirective } from 'ousia';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'maf-try',
-  templateUrl: './try.component.html',
-  styleUrls: ['./try.component.scss']
+	selector: 'maf-try',
+	templateUrl: './try.component.html',
+	styleUrls: ['./try.component.scss']
 })
-export class TryComponent implements AfterViewInit {
+export class TryComponent {
 
-  @ViewChildren(NamespaceDirective) namespaceDirectives?: QueryList<NamespaceDirective>;
+	formGroup = new FormGroup({
+		age: new FormControl<number>(60),
+		firstName: new FormControl<string>('Paul')
+	});
 
-  ngAfterViewInit(): void {
-    this.namespaceDirectives?.forEach(directive => {
-      console.log(`** Namespace: ${directive.namespace} - Path: ${directive.namespacePath}`);
-    });
-  }
 }
