@@ -1,17 +1,11 @@
 <h1>Try</h1>
 
-<!-- <div o-namespace="parent">
-	<div o-namespace="child">
-		<o-field-label>
-			<input type="age" min="0" max="5" />
-		</o-field-label>
-		<input title="This is a title." />
-	</div>
-</div> -->
-
-<div o-namespace="parent">
-	<div o-namespace="child">
+<div oNamespace="parent">
+	<div oNamespace="child">
 		<form [formGroup]="formGroup">
+			<o-field-label>
+				<input formControlName="firstName" type="string"/>
+			</o-field-label>
 			<o-field-label>
 				<input formControlName="age" type="number"/>
 			</o-field-label>

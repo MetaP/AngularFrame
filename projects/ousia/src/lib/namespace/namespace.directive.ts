@@ -1,11 +1,11 @@
 import { Directive, Host, Input, Optional, SkipSelf } from '@angular/core';
 
 @Directive({
-  selector: '[o-namespace]'
+  selector: '[oNamespace]'
 })
 export class NamespaceDirective {
 
-  @Input('o-namespace') namespace: string = '';
+  @Input('oNamespace') namespace: string = '';
 
   get namespacePath(): string {
     return this.parentNamespaceDirective
