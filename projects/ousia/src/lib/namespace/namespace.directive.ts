@@ -1,17 +1,18 @@
 import { Directive, Host, Input, Optional, SkipSelf } from '@angular/core';
 
 @Directive({
-  selector: '[oNamespace]'
+	selector: '[oNamespace]'
 })
 export class NamespaceDirective {
 
-  @Input('oNamespace') namespace: string = '';
+	@Input('oNamespace') namespace?: string;
 
-  get namespacePath(): string {
-    return this.parentNamespaceDirective
-      ? this.parentNamespaceDirective.namespacePath + '.' + this.namespace
-      : this.namespace;
-  }
+	get key(): string {
+		let key = this.parentNamespaceDirective
+			? [this.parentNamespaceDirective.key, this.namespace].join('.')
+			: this.namespace;
+		return key ?? '';
+	}
 
-  constructor(@SkipSelf() @Optional() private parentNamespaceDirective: NamespaceDirective) { }
+	constructor(@SkipSelf() @Optional() public parentNamespaceDirective: NamespaceDirective) { }
 }

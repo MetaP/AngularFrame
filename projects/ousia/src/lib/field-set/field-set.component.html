@@ -1,0 +1,7 @@
+<fieldset [name]="name">
+	<legend *ngIf="hasCaption">
+		<o-localized-text [name]="captionName"></o-localized-text>
+	</legend>
+	<ng-content></ng-content>
+</fieldset>
+

@@ -10,8 +10,8 @@ import { NamespaceDirective } from '../namespace/namespace.directive';
 export class FieldLabelComponent implements OnChanges, AfterViewInit {
 
 	@Input() namespace?: string;
-	@Input() captionKey?: string;
-	captionKeyPath?: string;
+	@Input() name?: string;
+	key?: string;
 
 	// Get the FormControlName directive of the <ng-content>, if any.
 	@ContentChild(FormControlName) private formControlName?: FormControlName;
@@ -22,32 +22,32 @@ export class FieldLabelComponent implements OnChanges, AfterViewInit {
 
 	ngAfterViewInit(): void {
 		/* Perform the update in the next JavaScript event loop to avoid ExpressionChangedAfterItHasBeenCheckedError */
-		setTimeout(() => this.updateCaptionKeyPath());
+		setTimeout(() => this.updateKey());
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {
-		this.updateCaptionKeyPath();
+		this.updateKey();
 	}
 
-	private updateCaptionKeyPath(): void {
-		let path = '';
+	private updateKey(): void {
+		let key = '';
 
 		if (this.namespace) {
-			path = this.namespace;
+			key = this.namespace;
 		} else if (this.namespaceDirective) {
-			path = this.namespaceDirective.namespacePath;
+			key = this.namespaceDirective.key;
 		}
 
-		if (path.length > 0 && !path.endsWith('.')) {
-			path = path + '.';
+		if (key.length > 0 && !key.endsWith('.')) {
+			key = key + '.';
 		}
 
-		if (this.captionKey) {
-			path = path + this.captionKey;
+		if (this.name) {
+			key = key + this.name;
 		} else if (this.formControlName?.name) {
-			path = path + this.formControlName.name;
+			key = key + this.formControlName.name;
 		}
 
-		this.captionKeyPath = path;
+		this.key = key;
 	}
 }

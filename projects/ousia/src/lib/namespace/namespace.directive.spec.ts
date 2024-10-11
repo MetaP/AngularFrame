@@ -38,11 +38,11 @@ describe('NamespaceDirective', () => {
 
   it('should assign its own namespace when no parent directive exists', () => {
     expect(parentDirective.namespace).toBe('parent');
-    expect(parentDirective.namespacePath).toBe('parent');
+    expect(parentDirective.key).toBe('parent');
   });
 
   it('should concatenate parent and child namespaces correctly', () => {
     expect(childDirective.namespace).toBe('child');
-    expect(childDirective.namespacePath).toBe('parent.child');
+    expect(childDirective.key).toBe('parent.child');
   });
 });
