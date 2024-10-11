@@ -9,6 +9,8 @@
 			<o-field-label>
 				<input formControlName="age" type="number"/>
 			</o-field-label>
+			<try-address formGroupName="address" #address></try-address>
 		</form>
 	</div>
+	<pre>{{formGroup.getRawValue() | json}}</pre>
 </div>

@@ -5,11 +5,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TryRoutingModule } from './try-routing.module';
 import { TryComponent } from './try.component';
 import { OusiaModule } from 'ousia';
+import { AddressComponent } from './subform/address/address.component';
 
 
 @NgModule({
 	declarations: [
-		TryComponent
+		TryComponent,
+  AddressComponent
 	],
 	imports: [
 		CommonModule,
