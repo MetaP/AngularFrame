@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AddressComponent } from './subform/address/address.component';
+import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'maf-try',
@@ -13,7 +14,10 @@ export class TryComponent implements AfterViewInit {
 
 	formGroup: FormGroup;
 
-	constructor() {
+	constructor(translate: TranslateService) {
+
+		translate.use('nl');
+
 		this.formGroup = new FormGroup({
 			age: new FormControl<number>(60),
 			firstName: new FormControl<string>('Paul'),
