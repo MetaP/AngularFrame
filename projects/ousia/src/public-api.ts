@@ -14,3 +14,4 @@ export * from './lib/utilities/utility';
 export * from './lib/utilities/errors/programming-error';
 
 export * from './lib/services/localization/localization.service.def'
+export * from './lib/services/localization/localization.service.stub'
