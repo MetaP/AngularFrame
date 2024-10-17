@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -33,7 +33,7 @@ export class AddressComponent implements OnDestroy, ControlValueAccessor{
 	}
 
 	writeValue(value: any): void {
-		this.rootForm.setValue(value);
+		this.rootForm.patchValue(value);
 	}
 
 	registerOnChange(onChange: any): void {
@@ -52,13 +52,13 @@ export class AddressComponent implements OnDestroy, ControlValueAccessor{
 		}
 	}
 
-	public static createRootForm() : FormGroup {
+	private static createRootForm() : FormGroup {
 		return new FormGroup({
-			street: new FormControl<string>('Bovenstraat'),
-			houseNumber: new FormControl<string>('39'),
-			postalCode: new FormControl<string>('3210'),
-			municipality: new FormControl<string>('Linden'),
-			country: new FormControl<string>('België'),
+			street: new FormControl<string>(''),
+			houseNumber: new FormControl<string>(''),
+			postalCode: new FormControl<string>(''),
+			municipality: new FormControl<string>(''),
+			country: new FormControl<string>(''),
  		})
 	}
 }

@@ -1,5 +1,6 @@
 <h1>{{ 'try.title' | translate }}</h1>
 
+<div oLocalize="try.title">Not changed.</div>
 <div oNamespace="parent">
 	<div oNamespace="child">
 		<form [formGroup]="formGroup">
@@ -9,7 +10,7 @@
 			<o-field-label>
 				<input formControlName="age" type="number"/>
 			</o-field-label>
-			<try-address formGroupName="address" #address></try-address>
+			<try-address formControlName="address" #address></try-address>
 		</form>
 	</div>
 	<pre>{{formGroup.getRawValue() | json}}</pre>
