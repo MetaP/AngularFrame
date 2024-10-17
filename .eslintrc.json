@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": [
-    "projects/**/*"
+    "projects/ousia/**/*"
   ],
   "overrides": [
     {
@@ -22,7 +22,7 @@
         "@angular-eslint/component-selector": [
           "error",
           {
-            "prefix": "o",
+            "prefix": "try",
             "style": "kebab-case",
             "type": "element"
           }
@@ -30,7 +30,7 @@
         "@angular-eslint/directive-selector": [
           "error",
           {
-            "prefix": "o",
+            "prefix": "try",
             "style": "camelCase",
             "type": "attribute"
           }
@@ -38,9 +38,7 @@
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
+      "files": ["*.html"],
       "extends": [
         "plugin:@angular-eslint/template/recommended"
       ],
