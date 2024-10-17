@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Optional, Self, SkipSelf } from '@angular/core';
-import { FormGroupName } from '@angular/forms';
+import { FormControlName, FormGroupName } from '@angular/forms';
 import { ProgrammingError } from '../utilities/errors/programming-error';
-import { isBlankOrNotString } from '../utilities/utility';
+import { isBlankOrNotString, isDefined } from '../utilities/utility';
 import { NamespaceDirective } from '../namespace/namespace.directive';
 
 @Component({
@@ -19,7 +19,8 @@ export class FieldSetComponent implements OnInit {
 	constructor(
 		@Self() private ownNamespaceDirective: NamespaceDirective,
 		@Optional() @SkipSelf() parentNamespaceDirective: NamespaceDirective,
-		@Optional() private formGroupName: FormGroupName
+		@Optional() private formGroupName: FormGroupName,
+		@Optional() private formControlName: FormControlName,
 	) { 
 		ownNamespaceDirective.parentNamespaceDirective = parentNamespaceDirective;
 	}
@@ -29,8 +30,21 @@ export class FieldSetComponent implements OnInit {
 	}
 
 	private updateName(): void {
+
+		// If no name is specified...
 		if (isBlankOrNotString(this.name)) {
-			this.name = this.formGroupName?.name as string;
+			// ...and if this component is inside a named FormGroup, use this FormGroup's name.
+			if (isDefined(this.formGroupName)) {
+				this.name = this.formGroupName.name as string;
+			// ...or if this component is inside a named FormControl, use this FormControl's name
+			/*
+			 * (This can be the case if this field group is inside a subform component.
+			 *  The subform itself uses an unnamed FormGroup as root. 
+			 *  But the containing template binds the subform to a FormControl via a FormControlName directive.)
+			 */
+			} else if (isDefined(this.formControlName)) {
+				this.name = this.formControlName.name as string;
+			}
 		}
 
 		if (isBlankOrNotString(this.name)) {
