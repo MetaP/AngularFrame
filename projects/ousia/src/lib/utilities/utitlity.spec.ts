@@ -1,4 +1,5 @@
-import { isDefined, isUndefined, isNonBlankString, isBlankOrNotString } from "./utility";
+import { LTextDefinition, LTextDefinitionObject } from "../services/localization/localization.service.def";
+import { isDefined, isUndefined, isNonBlankString, isBlankOrNotString, addNamespaceToLTextDefinition } from "./utility";
 
 describe('utility.ts', () => {
 
@@ -77,6 +78,34 @@ describe('utility.ts', () => {
 		});
 		it('should return false if value is a non-blank string', () => {
 			expect(isBlankOrNotString('text')).toBeFalse();
+		});
+	});
+
+	describe('addNamespaceToLTextDefinition(namespace, definition)', () => {
+
+		const definitions: LTextDefinition[] = [
+			undefined,
+			'simple',
+			new LTextDefinitionObject('aKey'),
+			new LTextDefinitionObject('aKey', { 'aString': 'string value', 'aNumber': 63 })
+		]; 
+
+		definitions.forEach(definition => {
+			it(`should return definition (${definition?.toString()}) if namespace is null`, () => {
+				expect(addNamespaceToLTextDefinition(null, definition)).toEqual(definition);
+			})
+		});
+
+		const expected: LTextDefinition[] = [
+			'aNamespace.undefined',
+			'aNamespace.simple',
+			new LTextDefinitionObject('aNamespace.aKey'),
+			new LTextDefinitionObject('aNamespace.aKey', { 'aString': 'string value', 'aNumber': 63 })
+		]; 
+		definitions.forEach((definition, i) => {
+			it(`should add namespace 'aNamespace' to [key of] definition (${definition?.toString()})`, () => {
+				expect(addNamespaceToLTextDefinition('aNamespace', definition)).toEqual(expected[i]);
+			})
 		});
 	});
 

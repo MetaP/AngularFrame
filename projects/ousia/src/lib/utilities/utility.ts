@@ -1,3 +1,5 @@
+import { LTextDefinition, LTextDefinitionObject } from "../services/localization/localization.service.def";
+
 /**
  * Determines whether the specified value is defined or undefined.
  * @param value The value to test.
@@ -33,4 +35,23 @@ export function isNonBlankString(value: any) : boolean {
  */
 export function isBlankOrNotString(value: any) : boolean {
 	return (typeof value !== 'string' || value.trim().length < 1);
+}
+
+/**
+ * Combines a specified namespace with a specifie localized text definition.
+ * @param namespace 
+ * @param definition 
+ * @returns 
+ */
+export function addNamespaceToLTextDefinition(namespace: string | null, definition: LTextDefinition): LTextDefinition {
+	if (isNonBlankString(namespace)) {
+		const prefix = namespace!.endsWith('.') ? namespace : namespace + '.';
+		if (definition instanceof LTextDefinitionObject) {
+			return new LTextDefinitionObject(prefix + definition.key, definition.parameters);
+		} else {
+			return prefix! + definition; 
+		}
+	} else {
+		return definition;
+	}
 }
