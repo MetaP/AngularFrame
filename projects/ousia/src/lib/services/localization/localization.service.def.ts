@@ -2,6 +2,8 @@ import { InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export const LOCALIZATION_SERVICE = new InjectionToken<LocalizationService>('LocalizationService');
+export const DEFAULT_LOCALIZATION_SERVICE = new InjectionToken<LocalizationService>('DefaultLocalizationService');
+
 
 export class LTextDefinitionObject {
 
@@ -33,7 +35,7 @@ export class LTextDefinitionObject {
 			}
 		}
 
-		return s;
+		return `[${s}]`;
 	}
 }
 

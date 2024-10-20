@@ -14,7 +14,7 @@ describe('LTextDefinitionObject', () => {
 
 		it('should return correct value for key without parameters', () => {
 			const obj = new LTextDefinitionObject('aKey');
-			expect(obj.toString()).toBe('aKey');
+			expect(obj.toString()).toBe('[aKey]');
 		});
 
 		it('should return correct value for key with single string parameter', () => {
@@ -22,7 +22,7 @@ describe('LTextDefinitionObject', () => {
 				aString: 'aString'
 			};
 			const obj = new LTextDefinitionObject('aKey', parameters);
-			expect(obj.toString()).toBe('aKey ({aString}=aString)');
+			expect(obj.toString()).toBe('[aKey ({aString}=aString)]');
 		});
 
 		it('should return correct value for key with single number parameter', () => {
@@ -30,7 +30,7 @@ describe('LTextDefinitionObject', () => {
 				aNumber: 666
 			};
 			const obj = new LTextDefinitionObject('aKey', parameters);
-			expect(obj.toString()).toBe('aKey ({aNumber}=666)');
+			expect(obj.toString()).toBe('[aKey ({aNumber}=666)]');
 		});
 
 		it('should return correct value for key with single Date parameter', () => {
@@ -41,7 +41,7 @@ describe('LTextDefinitionObject', () => {
 				aDate: new Date(1963, 9, 22)
 			};
 			const obj = new LTextDefinitionObject('aKey', parameters);
-			expect(obj.toString()).toBe(`aKey ({aDate}=${dateString})`);
+			expect(obj.toString()).toBe(`[aKey ({aDate}=${dateString})]`);
 		});
 		
 		it('should return correct value for key with multiple parameters', () => {
@@ -54,7 +54,7 @@ describe('LTextDefinitionObject', () => {
 				aDate: date
 			};
 			const obj = new LTextDefinitionObject('aKey', parameters);
-			expect(obj.toString()).toBe(`aKey ({aString}=aString, {aNumber}=666, {aDate}=${dateString})`);
+			expect(obj.toString()).toBe(`[aKey ({aString}=aString, {aNumber}=666, {aDate}=${dateString})]`);
 		});
 	})
 });
